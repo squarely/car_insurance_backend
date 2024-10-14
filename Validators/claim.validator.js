@@ -10,7 +10,7 @@ const owner = [
         .isEmail().withMessage('Please enter a valid phonenumber'),
     body('owner.phonenumber')
         .exists().withMessage('phonenumber is required')
-        // .isMobilePhone().withMessage('Please enter a valid phonenumber'),
+    // .isMobilePhone().withMessage('Please enter a valid phonenumber'),
 ];
 
 const vehicle = [
@@ -32,7 +32,10 @@ const vehicle = [
     body('vehicle.vehicleColor')
         .exists().withMessage('vehicleColor is required')
         .isString().withMessage('vehicleColor must be a string')
-        .isLength({ min: 3, max: 50 }).withMessage('vehicleColor must be between 3 to 50 characters long')
+        .isLength({ min: 3, max: 50 }).withMessage('vehicleColor must be between 3 to 50 characters long'),
+    body('vehicle.vehicleIdentificationNumber')
+        .exists().withMessage('vehicleIdentificationNumber is required')
+        .isString().withMessage('vehicleIdentificationNumber must be a string')
 ]
 
 const incident = [

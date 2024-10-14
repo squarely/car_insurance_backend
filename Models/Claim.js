@@ -48,6 +48,11 @@ const vehicleSchema = new Schema({
         type: String,
         required: true,
     },
+    vehicleIdentificationNumber: {
+        type: String,
+        required: true,
+        unique: [true, "Vehicle Identification Number already exists"],
+    },
     vehicleImages: {
         type: [String],
     },
