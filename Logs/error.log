@@ -1,0 +1,63 @@
+2024-10-07T10:26:38.775Z - requiredConsumerFields is not defined
+ReferenceError: requiredConsumerFields is not defined
+    at getUsers (file:///D:/nodejs/insurance/Controllers/user.controllers.js:30:92)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2024-10-07T10:59:24.447Z - jwt malformed
+UnauthorizedError: jwt malformed
+    at new UnauthorizedError (D:\nodejs\insurance\node_modules\express-jwt\dist\errors\UnauthorizedError.js:22:28)
+    at D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:139:38
+    at step (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:33:23)
+    at Object.next (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:14:53)
+    at fulfilled (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:5:58)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2024-10-07T11:04:33.640Z - jwt malformed
+UnauthorizedError: jwt malformed
+    at new UnauthorizedError (D:\nodejs\insurance\node_modules\express-jwt\dist\errors\UnauthorizedError.js:22:28)
+    at D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:139:38
+    at step (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:33:23)
+    at Object.next (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:14:53)
+    at fulfilled (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:5:58)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2024-10-07T11:04:43.909Z - requiredConsumerFields is not defined
+ReferenceError: requiredConsumerFields is not defined
+    at getUsers (file:///D:/nodejs/insurance/Controllers/user.controllers.js:30:92)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2024-10-07T11:06:57.692Z - Cliam validation failed: assignedAt: Path `assignedAt` is required., userId: Path `userId` is required., accidentAt: Path `accidentAt` is required.
+ValidationError: Cliam validation failed: assignedAt: Path `assignedAt` is required., userId: Path `userId` is required., accidentAt: Path `accidentAt` is required.
+    at Document.invalidate (D:\nodejs\insurance\node_modules\mongoose\lib\document.js:3318:32)
+    at D:\nodejs\insurance\node_modules\mongoose\lib\document.js:3079:17
+    at D:\nodejs\insurance\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2024-10-07T11:07:23.057Z - Cliam validation failed: userId: Path `userId` is required., accidentAt: Path `accidentAt` is required.
+ValidationError: Cliam validation failed: userId: Path `userId` is required., accidentAt: Path `accidentAt` is required.
+    at Document.invalidate (D:\nodejs\insurance\node_modules\mongoose\lib\document.js:3318:32)
+    at D:\nodejs\insurance\node_modules\mongoose\lib\document.js:3079:17
+    at D:\nodejs\insurance\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2024-10-07T11:07:41.743Z - Cliam validation failed: accidentAt: Path `accidentAt` is required.
+ValidationError: Cliam validation failed: accidentAt: Path `accidentAt` is required.
+    at Document.invalidate (D:\nodejs\insurance\node_modules\mongoose\lib\document.js:3318:32)
+    at D:\nodejs\insurance\node_modules\mongoose\lib\document.js:3079:17
+    at D:\nodejs\insurance\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2024-10-07T11:08:26.359Z - requiredConsumerFields is not defined
+ReferenceError: requiredConsumerFields is not defined
+    at getClaims (file:///D:/nodejs/insurance/Controllers/claim.controllers.js:28:92)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2024-10-09T04:40:19.697Z - jwt expired
+UnauthorizedError: jwt expired
+    at new UnauthorizedError (D:\nodejs\insurance\node_modules\express-jwt\dist\errors\UnauthorizedError.js:22:28)
+    at D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:139:38
+    at step (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:33:23)
+    at Object.next (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:14:53)
+    at fulfilled (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:5:58)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
