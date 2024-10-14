@@ -61,3 +61,11 @@ UnauthorizedError: jwt expired
     at fulfilled (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:5:58)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
 
+2024-10-14T09:26:39.746Z - E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901144" }
+MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901144" }
+    at InsertOneOperation.execute (D:\nodejs\insurance\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async tryOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:192:20)
+    at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
+    at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
+

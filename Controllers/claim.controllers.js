@@ -114,6 +114,7 @@ export const updateRepairCost = async (req, res, next) => {
         }
 
         const payload = {
+            status:'completed',
             aiRepairEstimationCost: 2000,
             suggestedSettlementCost: 2500,
             aiAnalisysImage: 'https://my-structure-storage.s3.eu-north-1.amazonaws.com/carinsurance/claim/input/f699a3c9-7f87-4662-841b-e7a6df430327',
