@@ -6,7 +6,7 @@ const { Schema, model } = mongoose;
 
 const AutoIncrement = mongooseSequence(mongoose);
 
-const contactSchema = new Schema({
+const ownerSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -106,7 +106,7 @@ const policySchema = new Schema({
 });
 
 const data = {
-    contact: contactSchema,
+    owner: ownerSchema,
     vehicle: vehicleSchema,
     incident: incidentSchema,
     policy: policySchema,

@@ -18,7 +18,7 @@ export const getAccessToken = async (payload) => {
     return jwt.sign(payload, process.env.JWT_ACCESS_SECRET, { expiresIn: process.env.JWT_ACCESS_EXPIRATION })
 }
 
-export const getRefreshToken = async (payload) => {p
+export const getRefreshToken = async (payload) => {
     return jwt.sign(payload, process.env.JWT_REFRESH_SECRET, { expiresIn: '365d' })
 }
 

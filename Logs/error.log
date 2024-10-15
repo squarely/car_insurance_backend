@@ -69,3 +69,39 @@ MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams in
     at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
     at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
 
+2024-10-15T11:03:22.341Z - jwt expired
+UnauthorizedError: jwt expired
+    at new UnauthorizedError (D:\nodejs\insurance\node_modules\express-jwt\dist\errors\UnauthorizedError.js:22:28)
+    at D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:139:38
+    at step (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:33:23)
+    at Object.next (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:14:53)
+    at fulfilled (D:\nodejs\insurance\node_modules\express-jwt\dist\index.js:5:58)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2024-10-15T11:03:28.450Z - p is not defined
+ReferenceError: p is not defined
+    at getRefreshToken (file:///D:/nodejs/insurance/Utils/utils.js:21:52)
+    at loginUser (file:///D:/nodejs/insurance/Controllers/user.controllers.js:115:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2024-10-15T11:04:32.058Z - Cast to ObjectId failed for value "getClaimCount" (type string) at path "_id" for model "Cliam"
+CastError: Cast to ObjectId failed for value "getClaimCount" (type string) at path "_id" for model "Cliam"
+    at SchemaObjectId.cast (D:\nodejs\insurance\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\nodejs\insurance\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\nodejs\insurance\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\nodejs\insurance\node_modules\mongoose\lib\cast.js:389:32)
+    at Query.cast (D:\nodejs\insurance\node_modules\mongoose\lib\query.js:4868:12)
+    at Query._castConditions (D:\nodejs\insurance\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (D:\nodejs\insurance\node_modules\mongoose\lib\query.js:2589:8)
+    at model.Query.exec (D:\nodejs\insurance\node_modules\mongoose\lib\query.js:4412:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getClaim (file:///D:/nodejs/insurance/Controllers/claim.controllers.js:62:22)
+
+2024-10-15T11:06:36.313Z - E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901144" }
+MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901144" }
+    at InsertOneOperation.execute (D:\nodejs\insurance\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async tryOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:192:20)
+    at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
+    at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
+

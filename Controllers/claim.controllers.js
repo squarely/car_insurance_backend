@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import { create, findByIdAndUpdate, find, findById, count } from '..//Repositories/claim.repository.js';
+import { create, findByIdAndUpdate, find, findById, count, aggregate } from '..//Repositories/claim.repository.js';
 import { emptyRespose } from '../Utils/utils.js';
 import { getFileUrl, generatePresignedUrl } from '../Utils/storage/aws-storage.js';
 import { v4 as uuidv4 } from 'uuid';
@@ -27,7 +27,10 @@ export const getClaims = async (req, res, next) => {
         else if (page < 1) page = 1
         const startingLimit = (page - 1) * resultPerPage;
 
-        const data = await find(req.query).skip(startingLimit).limit(resultPerPage);
+        const data = await find(req.query)
+            .sort({ createdAt: -1 })
+            .skip(startingLimit)
+            .limit(resultPerPage);
 
         res.status(200).json({
             count: data.length,
@@ -82,6 +85,30 @@ export const deleteClaim = async (req, res, next) => {
     }
 }
 
+export const getClaimCount = async (req, res, next) => {
+    try {
+        const counts = await aggregate([
+            {
+                $group: {
+                    _id: null,
+                    pendingCount: { $sum: { $cond: [{ $eq: ["$status", "pending"] }, 1, 0] } },
+                    completedCount: { $sum: { $cond: [{ $eq: ["$status", "completed"] }, 1, 0] } },
+                    totalCount: { $sum: 1 },
+                }
+            }
+        ]);
+
+        return res.status(200).json({
+            pending: counts[0].pendingCount,
+            completed: counts[0].completedCount,
+            total: counts[0].totalCount,
+        });
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 export const getClaimImage = async (req, res, next) => {
     try {
         const claim = await findById(req.params.id);
@@ -113,8 +140,12 @@ export const updateRepairCost = async (req, res, next) => {
             return res.status(404).json({ message: 'Claim not found' })
         }
 
+        if (claim.status == 'completed') {
+            return res.status(400).json({ message: 'Claim is already completed' })
+        }
+
         const payload = {
-            status:'completed',
+            status: 'completed',
             aiRepairEstimationCost: 2000,
             suggestedSettlementCost: 2500,
             aiAnalisysImage: 'https://my-structure-storage.s3.eu-north-1.amazonaws.com/carinsurance/claim/input/f699a3c9-7f87-4662-841b-e7a6df430327',
