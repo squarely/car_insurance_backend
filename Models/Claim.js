@@ -121,6 +121,9 @@ const data = {
         required: true,
         default: Date.now,
     },
+    damagedParts: {
+        type: [String],
+    },
     aiRepairEstimationCost: {
         type: Number,
     },

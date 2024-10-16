@@ -155,8 +155,9 @@ export const updateRepairCost = async (req, res, next) => {
 
         const payload = {
             status: 'completed',
-            aiRepairEstimationCost: damageResponse.data,
-            suggestedSettlementCost: damageResponse.data != 0 ? damageResponse.data - 200 : 0,
+            aiRepairEstimationCost: damageResponse.data.estimated_cost,
+            damagedParts : damageResponse.data.detected_parts,
+            suggestedSettlementCost: damageResponse.data.estimated_cost != 0 ? damageResponse.data.estimated_cost - 200 : 0,
             aiAnalisysImage: imageUrl,
             aiGeneratedReportDate: new Date(),
         }
