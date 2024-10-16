@@ -17,7 +17,7 @@ const app = express();
 // Middlewares
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+app.use(cors("*"));
 app.use(globalAuthentication());
 
 const APIv1 = process.env.APIV1;

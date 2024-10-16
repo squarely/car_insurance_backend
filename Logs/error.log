@@ -105,3 +105,31 @@ MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams in
     at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
     at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
 
+2024-10-16T06:20:03.226Z - E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901145" }
+MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901145" }
+    at InsertOneOperation.execute (D:\nodejs\insurance\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async tryOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:192:20)
+    at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
+    at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
+
+2024-10-16T06:57:51.434Z - 500
+Error: 500
+    at damageDetectionApi (file:///D:/nodejs/insurance/Utils/damageDetectionApi.js:18:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateRepairCost (file:///D:/nodejs/insurance/Controllers/claim.controllers.js:154:32)
+
+2024-10-16T07:00:06.847Z - 500
+Error: 500
+    at damageDetectionApi (file:///D:/nodejs/insurance/Utils/damageDetectionApi.js:18:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateRepairCost (file:///D:/nodejs/insurance/Controllers/claim.controllers.js:157:32)
+
+2024-10-16T09:21:28.334Z - E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901147" }
+MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP901147" }
+    at InsertOneOperation.execute (D:\nodejs\insurance\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async tryOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:192:20)
+    at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
+    at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
+

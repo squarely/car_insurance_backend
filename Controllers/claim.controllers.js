@@ -3,6 +3,7 @@ import { create, findByIdAndUpdate, find, findById, count, aggregate } from '../
 import { emptyRespose } from '../Utils/utils.js';
 import { getFileUrl, generatePresignedUrl } from '../Utils/storage/aws-storage.js';
 import { v4 as uuidv4 } from 'uuid';
+import { damageDetectionApi } from '../Utils/damageDetectionApi.js';
 
 dotenv.config()
 
@@ -144,18 +145,25 @@ export const updateRepairCost = async (req, res, next) => {
             return res.status(400).json({ message: 'Claim is already completed' })
         }
 
+        let subUrl = `carinsurance/claim/output/${uuidv4()}`
+
+        const imageUrl = getFileUrl(subUrl)
+
+        const preSignedUrl = await generatePresignedUrl(subUrl)
+
+        const damageResponse = await damageDetectionApi({ image_url: claim.damagedPartImage, pre_signed_url: preSignedUrl })
+
         const payload = {
             status: 'completed',
-            aiRepairEstimationCost: 2000,
-            suggestedSettlementCost: 2500,
-            aiAnalisysImage: 'https://my-structure-storage.s3.eu-north-1.amazonaws.com/carinsurance/claim/input/f699a3c9-7f87-4662-841b-e7a6df430327',
+            aiRepairEstimationCost: damageResponse.data,
+            suggestedSettlementCost: damageResponse.data != 0 ? damageResponse.data - 200 : 0,
+            aiAnalisysImage: imageUrl,
             aiGeneratedReportDate: new Date(),
         }
 
         const data = await findByIdAndUpdate(req.params.id, payload, { new: true })
 
         res.status(200).json(data)
-
     } catch (error) {
         next(error)
     }
