@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import { create, findByIdAndUpdate, find, findById, count, aggregate } from '..//Repositories/claim.repository.js';
+import { create, findByIdAndUpdate, find, findById, count, aggregate,findByIdAndDelete } from '..//Repositories/claim.repository.js';
 import { emptyRespose } from '../Utils/utils.js';
 import { getFileUrl, generatePresignedUrl } from '../Utils/storage/aws-storage.js';
 import { v4 as uuidv4 } from 'uuid';
@@ -79,7 +79,7 @@ export const updateClaim = async (req, res, next) => {
 
 export const deleteClaim = async (req, res, next) => {
     try {
-        const data = await findByIdAndRemove(req.params.id)
+        const data = await findByIdAndDelete(req.params.id)
         res.status(200).json(data)
     } catch (error) {
         next(error)

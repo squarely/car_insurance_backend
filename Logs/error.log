@@ -133,3 +133,24 @@ MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams in
     at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
     at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
 
+2024-10-17T08:34:50.581Z - Claim.findByIdAndRemove is not a function
+TypeError: Claim.findByIdAndRemove is not a function
+    at findByIdAndRemove (file:///D:/nodejs/insurance/Repositories/claim.repository.js:7:48)
+    at deleteClaim (file:///D:/nodejs/insurance/Controllers/claim.controllers.js:82:28)
+    at Layer.handle [as handle_request] (D:\nodejs\insurance\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\nodejs\insurance\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\nodejs\insurance\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\nodejs\insurance\node_modules\express\lib\router\layer.js:95:5)
+    at D:\nodejs\insurance\node_modules\express\lib\router\index.js:284:15
+    at param (D:\nodejs\insurance\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\nodejs\insurance\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\nodejs\insurance\node_modules\express\lib\router\index.js:421:3)
+
+2024-10-17T08:48:20.854Z - E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP9011411" }
+MongoServerError: E11000 duplicate key error collection: carinsuarance.cliams index: vehicle.vehicleIdentificationNumber_1 dup key: { vehicle.vehicleIdentificationNumber: "1VXBR24EXCP9011411" }
+    at InsertOneOperation.execute (D:\nodejs\insurance\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async tryOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:192:20)
+    at async executeOperation (D:\nodejs\insurance\node_modules\mongodb\lib\operations\execute_operation.js:69:16)
+    at async Collection.insertOne (D:\nodejs\insurance\node_modules\mongodb\lib\collection.js:154:16)
+
