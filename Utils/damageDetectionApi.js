@@ -6,7 +6,7 @@ export async function damageDetectionApi(payload) {
         const response = await axios.request({
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://13.61.35.111:8000/api/v1/damage-detection',
+            url: 'http://13.60.49.139:8000/api/v1/damage-detection',
             headers: {
                 'Content-Type': 'application/json',
             },
