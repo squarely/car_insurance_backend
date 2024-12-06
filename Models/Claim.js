@@ -105,6 +105,43 @@ const policySchema = new Schema({
     }
 });
 
+const partPrice = new Schema({
+    part: {
+        type: String,
+        required: true,
+    },
+    partPrice: {
+        type: Number,
+        required: true,
+    },
+    labourPrice: {
+        type: Number,
+        required: true,
+    },
+    subTotal: {
+        type: Number,
+        required: true,
+    }
+});
+
+const priceCalculation = new Schema({
+    parts: {
+        type: [partPrice]
+    },
+    partsTotalAmount: {
+        type: Number,
+        required: true,
+    },
+    labourTotalAmount: {
+        type: Number,
+        required: true,
+    },
+    totalAmount: {
+        type: Number,
+        required: true,
+    }
+});
+
 const data = {
     owner: ownerSchema,
     vehicle: vehicleSchema,
@@ -130,15 +167,19 @@ const data = {
     suggestedSettlementCost: {
         type: Number,
     },
-    damagedPartImage: {
-        type: String,
+    damagedPartImages: {
+        type: [String],
     },
-    aiAnalisysImage: {
-        type: String,
+    aiAnalisysImages: {
+        type: [String],
     },
     aiGeneratedReportDate: {
         type: Date,
+    },
+    priceCalculation: {
+        type: priceCalculation
     }
+
 };
 
 const cliamSchema = new Schema(data, { timestamps: true });

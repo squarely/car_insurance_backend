@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
-import { create, findByIdAndUpdate, find, findById, count, aggregate,findByIdAndDelete } from '..//Repositories/claim.repository.js';
+import { create, findByIdAndUpdate, find, findById, count, aggregate, findByIdAndDelete } from '..//Repositories/claim.repository.js';
 import { emptyRespose } from '../Utils/utils.js';
-import { getFileUrl, generatePresignedUrl } from '../Utils/storage/aws-storage.js';
+import { getFileUrl, generatePresignedUrl, generatePresignedUrls } from '../Utils/storage/aws-storage.js';
 import { v4 as uuidv4 } from 'uuid';
 import { damageDetectionApi } from '../Utils/damageDetectionApi.js';
 
@@ -118,13 +118,13 @@ export const getClaimImage = async (req, res, next) => {
             return res.status(404).json({ message: 'Claim not found' })
         }
 
-        let subUrl = `carinsurance/claim/input/${uuidv4()}`
+        let subUrl = `carinsurance/claim/input/${claim._id}/${uuidv4()}`
 
         const imageUrl = getFileUrl(subUrl)
 
         const preSignedUrl = await generatePresignedUrl(subUrl)
 
-        await findByIdAndUpdate(req.params.id, { damagedPartImage: imageUrl }, { new: true })
+        await findByIdAndUpdate(req.params.id, { $push: { damagedPartImages: imageUrl } }, { new: true })
 
         res.status(200).json({ preSignedUrl, imageUrl })
     } catch (error) {
@@ -145,20 +145,19 @@ export const updateRepairCost = async (req, res, next) => {
             return res.status(400).json({ message: 'Claim is already completed' })
         }
 
-        let subUrl = `carinsurance/claim/output/${uuidv4()}`
+        let base = `carinsurance/claim/output/${claim._id}`
 
-        const imageUrl = getFileUrl(subUrl)
+        const { signedUrls, attachmentUrls } = await generatePresignedUrls(claim.damagedPartImages.length, base)
 
-        const preSignedUrl = await generatePresignedUrl(subUrl)
-
-        const damageResponse = await damageDetectionApi({ image_url: claim.damagedPartImage, pre_signed_url: preSignedUrl })
+        const damageResponse = await damageDetectionApi({ parts: claim.damagedPartImages, signedUrls })
 
         const payload = {
             status: 'completed',
-            aiRepairEstimationCost: damageResponse.data.estimated_cost,
-            damagedParts : damageResponse.data.detected_parts,
-            suggestedSettlementCost: damageResponse.data.estimated_cost != 0 ? damageResponse.data.estimated_cost - 200 : 0,
-            aiAnalisysImage: imageUrl,
+            priceCalculation: damageResponse.data,
+            aiRepairEstimationCost: damageResponse.data.totalAmount,
+            damagedParts: damageResponse.detected_parts,
+            suggestedSettlementCost: damageResponse.data.totalAmount != 0 ? damageResponse.data.totalAmount - 200 : 0,
+            aiAnalisysImages: attachmentUrls,
             aiGeneratedReportDate: new Date(),
         }
 
